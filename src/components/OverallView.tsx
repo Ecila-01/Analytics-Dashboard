@@ -2,7 +2,7 @@ import { useState } from 'react';
 import InsightBanner from './InsightBanner';
 import { mockChannels, mockStores } from '../mockData';
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend, PieChart, Pie, Cell } from 'recharts';
-import { Layers, TrendingUp, TrendingDown, Sparkles } from 'lucide-react';
+import { Layers, TrendingUp, TrendingDown } from 'lucide-react';
 
 export default function OverallView() {
   const chartData = mockChannels[0].metrics.map((m, idx) => {

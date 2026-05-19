@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { mockStores } from '../mockData';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, LineChart, Line } from 'recharts';
-import { ShoppingBag, ShoppingCart, DollarSign, Percent, TrendingUp, TrendingDown, Sparkles } from 'lucide-react';
+import { ShoppingBag, ShoppingCart, DollarSign, Percent, TrendingUp, TrendingDown } from 'lucide-react';
 import InsightBanner from './InsightBanner';
 
 export default function WebStoreView() {
