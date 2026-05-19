@@ -8,12 +8,13 @@ export interface WebStoreMetric {
   month: string;
   unitsSold: number;
   revenue: number;
-  conversionRate: number; 
+  conversionRate: number;
 }
 
 export interface ChannelData {
   id: string;
   name: string;
+  subscribers: number;
   metrics: YouTubeMetric[];
 }
 
@@ -27,23 +28,29 @@ export const mockChannels: ChannelData[] = [
   {
     id: "yt-1",
     name: "GlowGarden Core",
+    subscribers: 184200,
     metrics: [
+      { month: "Nov", views: 95000,  revenue: 1900 },
+      { month: "Dec", views: 110000, revenue: 2200 },
       { month: "Jan", views: 120000, revenue: 2400 },
       { month: "Feb", views: 150000, revenue: 3100 },
-      { month: "Mar", views: 140000, revenue: 2900 }, // Dip here
+      { month: "Mar", views: 140000, revenue: 2900 },
       { month: "Apr", views: 240000, revenue: 5600 },
-    ]
+    ],
   },
   {
     id: "yt-2",
     name: "GlowGarden Shorts",
+    subscribers: 62500,
     metrics: [
+      { month: "Nov", views: 310000, revenue: 310 },
+      { month: "Dec", views: 390000, revenue: 390 },
       { month: "Jan", views: 450000, revenue: 450 },
       { month: "Feb", views: 600000, revenue: 620 },
       { month: "Mar", views: 850000, revenue: 910 },
-      { month: "Apr", views: 810000, revenue: 750 }, // Dip here
-    ]
-  }
+      { month: "Apr", views: 810000, revenue: 750 },
+    ],
+  },
 ];
 
 export const mockStores: StoreData[] = [
@@ -51,20 +58,31 @@ export const mockStores: StoreData[] = [
     id: "shop-1",
     name: "Seeds & Merch US",
     metrics: [
-      { month: "Jan", unitsSold: 320, revenue: 9600, conversionRate: 2.4 },
+      { month: "Nov", unitsSold: 210, revenue: 6300,  conversionRate: 1.9 },
+      { month: "Dec", unitsSold: 280, revenue: 8400,  conversionRate: 2.2 },
+      { month: "Jan", unitsSold: 320, revenue: 9600,  conversionRate: 2.4 },
       { month: "Feb", unitsSold: 410, revenue: 12300, conversionRate: 2.8 },
       { month: "Mar", unitsSold: 580, revenue: 17400, conversionRate: 3.1 },
       { month: "Apr", unitsSold: 720, revenue: 21600, conversionRate: 3.5 },
-    ]
+    ],
   },
   {
     id: "shop-2",
     name: "Premium Tools EU",
     metrics: [
+      { month: "Nov", unitsSold: 90,  revenue: 4500, conversionRate: 1.5 },
+      { month: "Dec", unitsSold: 105, revenue: 5250, conversionRate: 1.7 },
       { month: "Jan", unitsSold: 110, revenue: 5500, conversionRate: 1.8 },
-      { month: "Feb", unitsSold: 95, revenue: 4750, conversionRate: 1.6 }, // Dip here
+      { month: "Feb", unitsSold: 95,  revenue: 4750, conversionRate: 1.6 },
       { month: "Mar", unitsSold: 150, revenue: 7500, conversionRate: 2.1 },
-      { month: "Apr", unitsSold: 130, revenue: 6500, conversionRate: 1.9 }, // Dip here
-    ]
-  }
+      { month: "Apr", unitsSold: 130, revenue: 6500, conversionRate: 1.9 },
+    ],
+  },
 ];
+
+// ── helpers ──────────────────────────────────────────────────────────────────
+
+export function calcTrend(current: number, prev: number): number {
+  if (!prev) return 0;
+  return parseFloat((((current - prev) / prev) * 100).toFixed(1));
+}
