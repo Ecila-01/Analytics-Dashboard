@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import OverallView from './components/OverallView';
 import YouTubeView from './components/YouTubeView';
 import WebStoreView from './components/WebStoreView';

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { mockStores } from '../mockData';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, LineChart, Line } from 'recharts';
 import { ShoppingBag, ShoppingCart, DollarSign, Percent, TrendingUp, TrendingDown, Sparkles } from 'lucide-react';
